@@ -1,0 +1,2327 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 3,
+  "links": [],
+  "panels": [
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 100,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style='width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;'><h1 style='margin: 0; font-size: 3em; font-weight: 500;'>DevOps Dashboard 1.0</h1></div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.0.0",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 2
+      },
+      "id": 39,
+      "panels": [],
+      "title": "Development Metrics Summary",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-blue",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 0,
+        "y": 3
+      },
+      "id": 40,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT count(*) FROM commit_details WHERE $__timeFilter(commit_date) AND repo_name IN (${repo:sqlstring})",
+          "refId": "A"
+        }
+      ],
+      "title": "Total Commits",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-blue",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 4,
+        "y": 3
+      },
+      "id": 41,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select count(distinct commit_user) from commit_details WHERE $__timeFilter(commit_date) AND repo_name IN (${repo:sqlstring})",
+          "refId": "A"
+        }
+      ],
+      "title": "No of Developers",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-blue",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 8,
+        "y": 3
+      },
+      "id": 43,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select sum(additions+deletions) as lines_changed  from commit_details WHERE $__timeFilter(commit_date) AND repo_name IN (${repo:sqlstring})",
+          "refId": "A"
+        }
+      ],
+      "title": "Lines Changed ",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-blue",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 12,
+        "y": 3
+      },
+      "id": 42,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select sum(files_changed)  from commit_details WHERE $__timeFilter(commit_date) AND repo_name IN (${repo:sqlstring})",
+          "refId": "A"
+        }
+      ],
+      "title": "Files Changed ",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 16,
+        "y": 3
+      },
+      "id": 44,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "valueSize": 75
+        },
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select count(*) from pr_details WHERE $__timeFilter(start_date) AND repo_name IN (${repo:sqlstring})",
+          "refId": "A"
+        }
+      ],
+      "title": "PRs",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 20,
+        "y": 3
+      },
+      "id": 45,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "valueSize": 75
+        },
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select count(state) state from pr_details  WHERE state='closed' AND $__timeFilter(start_date) AND repo_name IN (${repo:sqlstring})",
+          "refId": "A"
+        }
+      ],
+      "title": "PR Status - Closed",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 8
+      },
+      "id": 11,
+      "panels": [],
+      "title": "Development Metrics Details",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "orange",
+                "value": 24
+              },
+              {
+                "color": "red",
+                "value": 168
+              }
+            ]
+          },
+          "unit": "h"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "repo_name"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-blue",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "unit",
+                "value": ""
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 9
+      },
+      "id": 31,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  repo_name AS \"Repository\",\n  AVG(lead_time_in_seconds) / 3600 AS \"Average Lead Time (Hours)\"\nFROM\n  lead_time_to_change\nWHERE\n  $__timeFilter(merged_at) AND\n  repo_name IN (${repo:sqlstring})\nGROUP BY\n  repo_name\nORDER BY\n  \"Average Lead Time (Hours)\" DESC",
+          "refId": "A"
+        }
+      ],
+      "title": "Lead Time to Change by Repository",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "semi-dark-yellow",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "log": 2,
+              "type": "log"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "count"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 9
+      },
+      "id": 12,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "text": {
+          "valueSize": 15
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT commit_user, count(*) FROM commit_details WHERE $__timeFilter(commit_date) AND repo_name IN (${repo:sqlstring}) group by commit_user",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Commits per Developer",
+      "transformations": [
+        {
+          "id": "labelsToFields",
+          "options": {}
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "orange",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "log": 2,
+              "type": "log"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 17
+      },
+      "id": 13,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "text": {
+          "valueSize": 15
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select commit_user, sum(files_changed)  from commit_details WHERE $__timeFilter(commit_date) AND repo_name IN (${repo:sqlstring}) group by commit_user",
+          "refId": "A"
+        }
+      ],
+      "title": "Files Changed per Developer",
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "semi-dark-purple",
+            "mode": "shades"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 17
+      },
+      "id": 14,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "text": {
+          "valueSize": 15
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select commit_user, sum(additions+deletions) as lines_changed  from commit_details  WHERE $__timeFilter(commit_date) AND repo_name IN (${repo:sqlstring}) group by commit_user",
+          "refId": "A"
+        }
+      ],
+      "title": "Lines Changed per Developer",
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 25
+      },
+      "id": 53,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "text": {
+          "valueSize": 15
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "time_series",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  date_trunc('day', end_date) AS \"time\",\n  repo_name,\n  COUNT(*) AS \"Merges\"\nFROM \n  public.pr_details\nWHERE \n  $__timeFilter(end_date)\n  AND merged = true\n  AND repo_name IN (${repo:sqlstring}) \nGROUP BY \n  \"time\", repo_name\nORDER BY \n  \"time\" ASC;",
+          "refId": "A"
+        }
+      ],
+      "title": "Merge Frequency",
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 25
+      },
+      "id": 54,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "time_series",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  date_trunc('day', commit_date) AS \"time\",\n  repo_name,\n  COUNT(*) AS \"Commits\"\nFROM \n  commit_details\nWHERE\n  $__timeFilter(commit_date) AND\n  repo_name IN (${repo:sqlstring})\nGROUP BY \n  \"time\", repo_name\nORDER BY \n  \"time\" ASC;",
+          "refId": "A"
+        }
+      ],
+      "title": "Commits per day",
+      "type": "barchart"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 33
+      },
+      "id": 33,
+      "panels": [],
+      "title": "Pipeline Metrics",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 34
+      },
+      "id": 38,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "time_series",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  date_trunc('day', completed_at) AS \"time\",\n  repo_name,\n  COUNT(*) AS \"Builds\"\nFROM \n  change_failure_rate_runs\nWHERE\n  $__timeFilter(completed_at) AND\n  repo_name IN (${repo:sqlstring})\nGROUP BY \n  \"time\", repo_name\nORDER BY \n  \"time\" ASC;",
+          "refId": "A"
+        }
+      ],
+      "title": "Pipeline Frequency",
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "blue",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 0,
+        "y": 42
+      },
+      "id": 34,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT COUNT(*) FROM change_failure_rate_runs\nWHERE $__timeFilter(completed_at) AND repo_name IN (${repo:sqlstring})",
+          "refId": "A"
+        }
+      ],
+      "title": "Total Releases",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "green",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 6,
+        "y": 42
+      },
+      "id": 35,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT COUNT(*) FROM change_failure_rate_runs\nWHERE $__timeFilter(completed_at) AND repo_name IN (${repo:sqlstring}) AND conclusion = 'success'",
+          "refId": "A"
+        }
+      ],
+      "title": "Successful Releases",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "red",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 12,
+        "y": 42
+      },
+      "id": 36,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT COUNT(*) FROM change_failure_rate_runs\nWHERE $__timeFilter(completed_at) AND repo_name IN (${repo:sqlstring}) AND conclusion = 'failure'",
+          "refId": "A"
+        }
+      ],
+      "title": "Failed Releases",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "purple",
+            "mode": "fixed"
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          },
+          "unit": "m"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 18,
+        "y": 42
+      },
+      "id": 37,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT AVG(duration_in_seconds) / 60 FROM build_durations\nWHERE $__timeFilter(completed_at) AND repo_name IN (${repo:sqlstring})",
+          "refId": "A"
+        }
+      ],
+      "title": "Average Release Duration (Mins)",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 46
+      },
+      "id": 10,
+      "panels": [],
+      "title": "DORA Metrics Detailed",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-yellow",
+            "mode": "fixed"
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          },
+          "unit": "h"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 0,
+        "y": 47
+      },
+      "id": 27,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  AVG(lead_time_in_seconds) / 3600\nFROM \n  lead_time_to_change\nWHERE\n  $__timeFilter(merged_at) AND\n  repo_name IN (${repo:sqlstring})",
+          "refId": "A"
+        }
+      ],
+      "title": "Overall Avg Lead Time",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-blue",
+            "mode": "fixed"
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "#EAB839",
+                "value": ""
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 6,
+        "y": 47
+      },
+      "id": 52,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT COALESCE((CAST(COUNT(*) AS REAL) / NULLIF(EXTRACT(DAYS FROM (MAX(completed_at) - MIN(completed_at))), 0)) * 30.44, 0) FROM change_failure_rate_runs WHERE $__timeFilter(completed_at) AND repo_name IN (${repo:sqlstring}) AND conclusion = 'success'",
+          "refId": "A"
+        }
+      ],
+      "title": "Deployment Frequency (per month)",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "orange",
+                "value": 15
+              },
+              {
+                "color": "red",
+                "value": 30
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 12,
+        "y": 47
+      },
+      "id": 28,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  CAST(COUNT(CASE WHEN conclusion = 'failure' THEN 1 END) AS REAL) * 100 / NULLIF(COUNT(*), 0)\nFROM\n  change_failure_rate_runs\nWHERE\n  $__timeFilter(completed_at) AND repo_name IN (${repo:sqlstring})",
+          "refId": "A"
+        }
+      ],
+      "title": "Change Failure Rate",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "orange",
+                "value": 8
+              },
+              {
+                "color": "red",
+                "value": 24
+              }
+            ]
+          },
+          "unit": "h"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 18,
+        "y": 47
+      },
+      "id": 29,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  AVG(time_to_recover_in_seconds) / 3600\nFROM\n  incidents_for_mttr\nWHERE\n  $__timeFilter(resolution_time) AND repo_name IN (${repo:sqlstring})",
+          "refId": "A"
+        }
+      ],
+      "title": "Mean Time to Recovery (Hours)",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "description": "<table style=\"width:100%\">\n  <tr>\n    <th>Value (Range)</th>\n    <th>Score</th>\n  </tr>\n  <tr>\n    <td>&lt; 1 hour</td>\n    <td>9-10</td>\n  </tr>\n  <tr>\n    <td>&lt; 1 day</td>\n    <td>7-8</td>\n  </tr>\n  <tr>\n    <td>1 day - 1 week</td>\n    <td>5-6</td>\n  </tr>\n  <tr>\n    <td>1 week - 1 month</td>\n    <td>3-4</td>\n  </tr>\n  <tr>\n    <td>1 month - 6 months</td>\n    <td>1-2</td>\n  </tr>\n  <tr>\n    <td>&gt; 6 months</td>\n    <td>0</td>\n  </tr>\n</table>",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "max": 10,
+          "min": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red"
+              },
+              {
+                "color": "orange",
+                "value": 4
+              },
+              {
+                "color": "yellow",
+                "value": 7
+              },
+              {
+                "color": "green",
+                "value": 9
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 0,
+        "y": 51
+      },
+      "id": 47,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": true,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "WITH metric AS (\n  SELECT COALESCE(AVG(lead_time_in_seconds) / 3600, 99999) as value FROM lead_time_to_change WHERE $__timeFilter(merged_at) AND repo_name IN (${repo:sqlstring})\n)\nSELECT CASE \n  WHEN value <= 1 THEN 10\n  WHEN value <= 24 THEN 8\n  WHEN value <= 168 THEN 6\n  WHEN value <= 720 THEN 4\n  WHEN value <= 4380 THEN 2\n  ELSE 0 \nEND\nFROM metric",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Lead Time Score",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "description": "<table style=\"border: 1px solid #ccc; border-collapse: collapse;\">\n  <thead>\n    <tr>\n      <th style=\"border: 1px solid #ccc; padding: 8px; text-align: left;\">Value</th>\n      <th style=\"border: 1px solid #ccc; padding: 8px; text-align: left;\">Score</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">On Demand</td>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">9-10</td>\n    </tr>\n    <tr>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">1 hour - 1 day</td>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">7-8</td>\n    </tr>\n    <tr>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">1 day - 1 week</td>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">5-6</td>\n    </tr>\n    <tr>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">1 week - 1 month</td>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">3-4</td>\n    </tr>\n    <tr>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">1 month - 6 months</td>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">1-2</td>\n    </tr>\n    <tr>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">&gt; 6 months</td>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">0</td>\n    </tr>\n  </tbody>\n</table>",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "max": 10,
+          "min": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red"
+              },
+              {
+                "color": "orange",
+                "value": 4
+              },
+              {
+                "color": "yellow",
+                "value": 7
+              },
+              {
+                "color": "green",
+                "value": 9
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 6,
+        "y": 51
+      },
+      "id": 48,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": true,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "WITH metric AS (\n  SELECT COALESCE(CAST(COUNT(*) AS REAL) / NULLIF(EXTRACT(DAYS FROM (MAX(completed_at) - MIN(completed_at))), 0), 0) as value FROM change_failure_rate_runs WHERE $__timeFilter(completed_at) AND repo_name IN (${repo:sqlstring}) AND conclusion = 'success'\n)\nSELECT CASE WHEN value >= 1 THEN 10 WHEN value >= 0.14 THEN 8 WHEN value > 0.033 THEN 5 ELSE 2 END\nFROM metric",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Deploy Frequency Score",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "description": "<table style=\"border: 1px solid #ccc; border-collapse: collapse;\">\n  <thead>\n    <tr>\n      <th style=\"border: 1px solid #ccc; padding: 8px; text-align: left;\">Value</th>\n      <th style=\"border: 1px solid #ccc; padding: 8px; text-align: left;\">Score</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">&lt;1 hour</td>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">0-17</td>\n    </tr>\n    <tr>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">&lt;1 day</td>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">18-34</td>\n    </tr>\n    <tr>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">1 day - 1 week</td>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">35-51</td>\n    </tr>\n    <tr>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">1 week - 1 month</td>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">52-67</td>\n    </tr>\n    <tr>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">1 month - 6 months</td>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">68-84</td>\n    </tr>\n    <tr>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">&gt; 6 months</td>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">85-100</td>\n    </tr>\n  </tbody>\n</table>",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "max": 10,
+          "min": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red"
+              },
+              {
+                "color": "orange",
+                "value": 4
+              },
+              {
+                "color": "yellow",
+                "value": 7
+              },
+              {
+                "color": "green",
+                "value": 9
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 12,
+        "y": 51
+      },
+      "id": 49,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": true,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "WITH metric AS (\n  SELECT COALESCE(CAST(COUNT(CASE WHEN conclusion = 'failure' THEN 1 END) AS REAL) * 100 / NULLIF(COUNT(*), 0), 0) as value FROM change_failure_rate_runs WHERE $__timeFilter(completed_at) AND repo_name IN (${repo:sqlstring})\n)\nSELECT CASE WHEN value <= 15 THEN 10 WHEN value <= 30 THEN 8 WHEN value <= 45 THEN 5 ELSE 2 END\nFROM metric",
+          "refId": "A"
+        }
+      ],
+      "title": "Change Failure Rate Score",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf1wcvvbfak8wd"
+      },
+      "description": "<table style=\"border: 1px solid #ccc; border-collapse: collapse;\">\n  <thead>\n    <tr>\n      <th style=\"border: 1px solid #ccc; padding: 8px; text-align: left;\">Value</th>\n      <th style=\"border: 1px solid #ccc; padding: 8px; text-align: left;\">Score</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">&lt;1 hour</td>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">9-10</td>\n    </tr>\n    <tr>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">&lt;1 day</td>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">7-8</td>\n    </tr>\n    <tr>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">1 day - 1 week</td>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">5-6</td>\n    </tr>\n    <tr>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">1 week - 1 month</td>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">3-4</td>\n    </tr>\n    <tr>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">1 month - 6 months</td>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">1-2</td>\n    </tr>\n    <tr>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">&gt; 6 months</td>\n      <td style=\"border: 1px solid #ccc; padding: 8px;\">0</td>\n    </tr>\n  </tbody>\n</table>",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "max": 10,
+          "min": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red"
+              },
+              {
+                "color": "orange",
+                "value": 4
+              },
+              {
+                "color": "yellow",
+                "value": 7
+              },
+              {
+                "color": "green",
+                "value": 9
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 18,
+        "y": 51
+      },
+      "id": 50,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": true,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "WITH metric AS (\n  SELECT COALESCE(AVG(time_to_recover_in_seconds) / 3600, 0) as value FROM incidents_for_mttr WHERE $__timeFilter(resolution_time) AND repo_name IN (${repo:sqlstring})\n)\nSELECT CASE WHEN value <= 1 THEN 10 WHEN value <= 24 THEN 8 WHEN value <= 168 THEN 5 ELSE 2 END\nFROM metric",
+          "refId": "A"
+        }
+      ],
+      "title": "MTTR Score",
+      "type": "gauge"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 55
+      },
+      "id": 46,
+      "panels": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "cf1wcvvbfak8wd"
+          },
+          "description": "Benchmarking<br>Elite - If score is >8-10 <br>High - If score is >6-8 <br> Medium - If score is >4-6 <br> Low - If score is below 4",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Score"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": ""
+                  },
+                  {
+                    "id": "decimals",
+                    "value": 2
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "red"
+                        },
+                        {
+                          "color": "orange",
+                          "value": 5
+                        },
+                        {
+                          "color": "yellow",
+                          "value": 6
+                        },
+                        {
+                          "color": "green",
+                          "value": 9
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Rating"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": ""
+                  },
+                  {
+                    "id": "decimals",
+                    "value": 0
+                  },
+                  {
+                    "id": "mappings",
+                    "value": [
+                      {
+                        "options": {
+                          "1": {
+                            "color": "red",
+                            "index": 0,
+                            "text": "Low"
+                          },
+                          "2": {
+                            "color": "orange",
+                            "index": 1,
+                            "text": "Medium"
+                          },
+                          "3": {
+                            "color": "yellow",
+                            "index": 2,
+                            "text": "High"
+                          },
+                          "4": {
+                            "color": "green",
+                            "index": 3,
+                            "text": "Elite"
+                          }
+                        },
+                        "type": "value"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "text"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 24,
+            "x": 0,
+            "y": 59
+          },
+          "id": 51,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "center",
+            "orientation": "vertical",
+            "percentChangeColorMode": "standard",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "text": {
+              "titleSize": 20,
+              "valueSize": 40
+            },
+            "textMode": "auto",
+            "wideLayout": true
+          },
+          "pluginVersion": "12.0.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "grafana-postgresql-datasource",
+                "uid": "cf1wcvvbfak8wd"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "WITH\nlead_time AS (\n  SELECT COALESCE(AVG(lead_time_in_seconds) / 3600, 8000) as value FROM lead_time_to_change WHERE $__timeFilter(merged_at) AND repo_name IN (${repo:sqlstring})\n),\ndeploy_freq AS (\n  SELECT COALESCE(CAST(COUNT(*) AS REAL) / NULLIF(EXTRACT(DAYS FROM (MAX(completed_at) - MIN(completed_at))), 0), 0) as value FROM change_failure_rate_runs WHERE $__timeFilter(completed_at) AND repo_name IN (${repo:sqlstring}) AND conclusion = 'success'\n),\nchange_fail_rate AS (\n  SELECT COALESCE(CAST(COUNT(CASE WHEN conclusion = 'failure' THEN 1 END) AS REAL) * 100 / NULLIF(COUNT(*), 0), 0) as value FROM change_failure_rate_runs WHERE $__timeFilter(completed_at) AND repo_name IN (${repo:sqlstring})\n),\nmttr AS (\n  SELECT COALESCE(AVG(time_to_recover_in_seconds) / 3600, 0) as value FROM incidents_for_mttr WHERE $__timeFilter(resolution_time) AND repo_name IN (${repo:sqlstring})\n),\nscores AS (\n  SELECT\n    (CASE WHEN lt.value <= 24 THEN 10 WHEN lt.value <= 168 THEN 8 WHEN lt.value <= 720 THEN 5 ELSE 2 END) as lt_score,\n    (CASE WHEN df.value >= 1 THEN 10 WHEN df.value >= 0.14 THEN 8 WHEN df.value > 0.033 THEN 5 ELSE 2 END) as df_score,\n    (CASE WHEN cfr.value <= 15 THEN 10 WHEN cfr.value <= 30 THEN 8 WHEN cfr.value <= 45 THEN 5 ELSE 2 END) as cfr_score,\n    (CASE WHEN m.value <= 1 THEN 10 WHEN m.value <= 24 THEN 8 WHEN m.value <= 168 THEN 5 ELSE 2 END) as mttr_score\n  FROM lead_time lt, deploy_freq df, change_fail_rate cfr, mttr m\n),\nfinal_score AS (\n  SELECT (lt_score + df_score + cfr_score + mttr_score) / 4.0 as score\n  FROM scores\n)\nSELECT\n  score as \"Score (1-10)\",\n  CASE\n    WHEN score >= 9 THEN 4\n    WHEN score >= 7 THEN 3\n    WHEN score >= 4 THEN 2\n    ELSE 1\n  END as \"Rating\"\nFROM final_score",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "Current Delivery Performance",
+          "type": "stat"
+        }
+     ],
+      "title": "DORA Performance Score",
+      "type": "row"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 41,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": [
+            "microsoft/TypeScript",
+            "rajiva11/github-actions-lab", "shantanu10839179/github-actions-lab",
+    "shantanu10839179/devsecopsdashboard"
+          ],
+          "value": [
+            "microsoft/TypeScript",
+            "rajiva11/github-actions-lab", "shantanu10839179/github-actions-lab",
+    "shantanu10839179/devsecopsdashboard"
+          ]
+        },
+        "datasource": {
+          "type": "grafana-postgresql-datasource",
+          "uid": "cf1wcvvbfak8wd"
+        },
+        "definition": "SELECT repo_name FROM commit_details\nUNION\nSELECT repo_name FROM pr_details\nUNION\nSELECT repo_name FROM lead_time_to_change\nUNION\nSELECT repo_name FROM incidents_for_mttr\nUNION\nSELECT repo_name FROM change_failure_rate_runs\nUNION\nSELECT repo_name FROM build_durations\nORDER BY repo_name",
+        "description": "Filter by one or more repositories.",
+        "includeAll": true,
+        "label": "Repository",
+        "multi": true,
+        "name": "repo",
+        "options": [],
+        "query": "SELECT repo_name FROM commit_details\nUNION\nSELECT repo_name FROM pr_details\nUNION\nSELECT repo_name FROM lead_time_to_change\nUNION\nSELECT repo_name FROM incidents_for_mttr\nUNION\nSELECT repo_name FROM change_failure_rate_runs\nUNION\nSELECT repo_name FROM build_durations\nORDER BY repo_name",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-30d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "NewDashboard",
+  "uid": "cf1wcvvbfak8wd",
+  "version": 77
+}

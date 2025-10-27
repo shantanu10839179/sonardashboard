@@ -1,0 +1,324 @@
+{
+  "title": "SonarQube Quality Dashboard",
+  "tags": ["sonarqube", "quality", "devops"],
+  "timezone": "browser",
+  "schemaVersion": 37,
+  "version": 1,
+  "refresh": "5m",
+  "panels": [
+    {
+      "type": "text",
+      "title": "SonarQube Metrics & Benefits",
+      "gridPos": { "h": 3, "w": 24, "x": 0, "y": 0 },
+      "options": {
+        "content": "### SonarQube Quality Dashboard\n\n**Coverage**: Higher coverage means better tested code, fewer bugs in production.\n\n**Bugs/Vulnerabilities**: Lower numbers mean higher code quality and security.\n\n**Code Smells**: Fewer smells = easier to maintain and extend code.\n\n**Technical Debt**: Lower debt = less time spent fixing old issues, more time for new features.\n\n**Duplicated Lines**: Lower % = less risk of inconsistent changes and bugs.\n\n**Ratings**: A/B ratings indicate high maintainability, reliability, and security.",
+        "mode": "markdown"
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Coverage (%)",
+      "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "decimals": 2,
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": null },
+              { "color": "orange", "value": 50 },
+              { "color": "green", "value": 80 }
+            ]
+          }
+        }
+      },
+      "gridPos": { "h": 4, "w": 4, "x": 0, "y": 3 },
+      "targets": [
+        {
+          "rawSql": "SELECT coverage FROM sonarqube_results WHERE repo_name = '${repo}' ORDER BY analysis_date DESC LIMIT 1",
+          "format": "table"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Bugs",
+      "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "orange", "value": 10 },
+              { "color": "red", "value": 50 }
+            ]
+          }
+        }
+      },
+      "gridPos": { "h": 4, "w": 4, "x": 4, "y": 3 },
+      "targets": [
+        {
+          "rawSql": "SELECT bugs FROM sonarqube_results WHERE repo_name = '${repo}' ORDER BY analysis_date DESC LIMIT 1",
+          "format": "table"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Vulnerabilities",
+      "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "orange", "value": 5 },
+              { "color": "red", "value": 20 }
+            ]
+          }
+        }
+      },
+      "gridPos": { "h": 4, "w": 4, "x": 8, "y": 3 },
+      "targets": [
+        {
+          "rawSql": "SELECT vulnerabilities FROM sonarqube_results WHERE repo_name = '${repo}' ORDER BY analysis_date DESC LIMIT 1",
+          "format": "table"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Code Smells",
+      "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "orange", "value": 50 },
+              { "color": "red", "value": 200 }
+            ]
+          }
+        }
+      },
+      "gridPos": { "h": 4, "w": 4, "x": 12, "y": 3 },
+      "targets": [
+        {
+          "rawSql": "SELECT code_smells FROM sonarqube_results WHERE repo_name = '${repo}' ORDER BY analysis_date DESC LIMIT 1",
+          "format": "table"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Technical Debt (Hours)",
+      "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "hour",
+          "decimals": 1,
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "orange", "value": 10 },
+              { "color": "red", "value": 100 }
+            ]
+          }
+        }
+      },
+      "gridPos": { "h": 4, "w": 4, "x": 16, "y": 3 },
+      "targets": [
+        {
+          "rawSql": "SELECT technical_debt_minutes/60.0 AS technical_debt_hours FROM sonarqube_results WHERE repo_name = '${repo}' ORDER BY analysis_date DESC LIMIT 1",
+          "format": "table"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Duplicated Lines (%)",
+      "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "decimals": 2,
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "orange", "value": 5 },
+              { "color": "red", "value": 20 }
+            ]
+          }
+        }
+      },
+      "gridPos": { "h": 4, "w": 4, "x": 20, "y": 3 },
+      "targets": [
+        {
+          "rawSql": "SELECT duplicated_lines_density FROM sonarqube_results WHERE repo_name = '${repo}' ORDER BY analysis_date DESC LIMIT 1",
+          "format": "table"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Maintainability Rating",
+      "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": 1 },
+              { "color": "orange", "value": 3 },
+              { "color": "red", "value": 5 }
+            ]
+          }
+        }
+      },
+      "gridPos": { "h": 4, "w": 4, "x": 0, "y": 7 },
+      "targets": [
+        {
+          "rawSql": "SELECT maintainability_rating FROM sonarqube_results WHERE repo_name = '${repo}' ORDER BY analysis_date DESC LIMIT 1",
+          "format": "table"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Reliability Rating",
+      "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": 1 },
+              { "color": "orange", "value": 3 },
+              { "color": "red", "value": 5 }
+            ]
+          }
+        }
+      },
+      "gridPos": { "h": 4, "w": 4, "x": 4, "y": 7 },
+      "targets": [
+        {
+          "rawSql": "SELECT reliability_rating FROM sonarqube_results WHERE repo_name = '${repo}' ORDER BY analysis_date DESC LIMIT 1",
+          "format": "table"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Security Rating",
+      "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": 1 },
+              { "color": "orange", "value": 3 },
+              { "color": "red", "value": 5 }
+            ]
+          }
+        }
+      },
+      "gridPos": { "h": 4, "w": 4, "x": 8, "y": 7 },
+      "targets": [
+        {
+          "rawSql": "SELECT security_rating FROM sonarqube_results WHERE repo_name = '${repo}' ORDER BY analysis_date DESC LIMIT 1",
+          "format": "table"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Coverage Trend",
+      "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 11 },
+      "targets": [
+        {
+          "rawSql": "SELECT analysis_date AS \"time\", repo_name, coverage FROM sonarqube_results WHERE repo_name IN (${repo:sqlstring}) ORDER BY analysis_date",
+          "format": "time_series"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Bugs Trend",
+      "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 11 },
+      "targets": [
+        {
+          "rawSql": "SELECT analysis_date AS \"time\", repo_name, bugs FROM sonarqube_results WHERE repo_name IN (${repo:sqlstring}) ORDER BY analysis_date",
+          "format": "time_series"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Code Smells Trend",
+      "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 19 },
+      "targets": [
+        {
+          "rawSql": "SELECT analysis_date AS \"time\", repo_name, code_smells FROM sonarqube_results WHERE repo_name IN (${repo:sqlstring}) ORDER BY analysis_date",
+          "format": "time_series"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Technical Debt Trend (Hours)",
+      "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 19 },
+      "targets": [
+        {
+          "rawSql": "SELECT analysis_date AS \"time\", repo_name, technical_debt_minutes/60.0 AS technical_debt_hours FROM sonarqube_results WHERE repo_name IN (${repo:sqlstring}) ORDER BY analysis_date",
+          "format": "time_series"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "title": "All SonarQube Metrics (Latest)",
+      "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+      "gridPos": { "h": 12, "w": 24, "x": 0, "y": 27 },
+      "targets": [
+        {
+          "rawSql": "SELECT repo_name, project_key, branch, quality_gate_status, coverage, bugs, vulnerabilities, code_smells, technical_debt_minutes, lines_of_code, duplicated_lines, maintainability_rating, reliability_rating, security_rating, sqale_index, duplicated_lines_density, alert_status, blocker_violations, critical_violations, major_violations, minor_violations, info_violations, tests, test_errors, test_failures, test_execution_time, test_success_density, lines, comment_lines_density, complexity, functions, statements, classes, files, branch_coverage, line_coverage, new_coverage, new_bugs, new_vulnerabilities, new_code_smells, new_duplicated_lines_density, new_lines, new_maintainability_rating, new_reliability_rating, new_security_rating, new_technical_debt, new_lines_to_cover, new_uncovered_lines, new_violations, ncloc, analysis_date FROM sonarqube_results WHERE (repo_name, analysis_date) IN (SELECT repo_name, MAX(analysis_date) FROM sonarqube_results GROUP BY repo_name) ORDER BY repo_name",
+          "format": "table"
+        }
+      ]
+    }
+  ],
+  "templating": {
+    "list": [
+      {
+        "name": "repo",
+        "type": "query",
+        "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+        "refresh": 1,
+        "query": "SELECT DISTINCT repo_name FROM sonarqube_results ORDER BY repo_name",
+        "multi": true,
+        "includeAll": true,
+        "allValue": "ALL"
+      }
+    ]
+  }
+}
