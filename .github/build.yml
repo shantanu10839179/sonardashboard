@@ -3,8 +3,15 @@ on:
   push:
     branches:
       - main
+      - master
+      - develop
+      - feature/*
   pull_request:
-    types: [opened, synchronize, reopened]
+    branches:
+      - main
+      - master
+      - develop
+      - feature/*
 jobs:
   sonarqube:
     name: SonarQube
