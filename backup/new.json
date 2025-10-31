@@ -1,0 +1,463 @@
+{
+  "panels": [
+    {
+      "type": "row",
+      "title": "Development Metrics Summary",
+      "collapsed": true,
+      "panels": [
+        {
+          "type": "stat",
+          "title": "Total Commits",
+          "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+          "gridPos": { "h": 3, "w": 6, "x": 0, "y": 10 },
+          "id": 4,
+          "fieldConfig": { "defaults": {}, "overrides": [] },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "center"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT count(*) FROM commit_details WHERE $__timeFilter(commit_date)"
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "title": "No of Developers",
+          "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+          "gridPos": { "h": 3, "w": 6, "x": 6, "y": 10 },
+          "id": 5,
+          "fieldConfig": { "defaults": {}, "overrides": [] },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "center"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT count(distinct commit_user) FROM commit_details WHERE $__timeFilter(commit_date)"
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "title": "Lines Changed",
+          "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+          "gridPos": { "h": 3, "w": 6, "x": 12, "y": 10 },
+          "id": 6,
+          "fieldConfig": { "defaults": {}, "overrides": [] },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "center"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT sum(additions+deletions) as lines_changed FROM commit_details WHERE $__timeFilter(commit_date)"
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "title": "Files Changed",
+          "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+          "gridPos": { "h": 3, "w": 6, "x": 18, "y": 10 },
+          "id": 7,
+          "fieldConfig": { "defaults": {}, "overrides": [] },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "center"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT sum(files_changed) FROM commit_details WHERE $__timeFilter(commit_date)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "row",
+      "title": "Development Metrics Summary",
+      "collapsed": true,
+      "panels": [
+        {
+          "type": "stat",
+          "title": "Total Commits",
+          "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+          "gridPos": { "h": 3, "w": 6, "x": 0, "y": 10 },
+          "id": 4,
+          "fieldConfig": { "defaults": {}, "overrides": [] },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "center"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT count(*) FROM commit_details WHERE $__timeFilter(commit_date)"
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "title": "No of Developers",
+          "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+          "gridPos": { "h": 3, "w": 6, "x": 6, "y": 10 },
+          "id": 5,
+          "fieldConfig": { "defaults": {}, "overrides": [] },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "center"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT count(distinct commit_user) FROM commit_details WHERE $__timeFilter(commit_date)"
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "title": "Lines Changed",
+          "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+          "gridPos": { "h": 3, "w": 6, "x": 12, "y": 10 },
+          "id": 6,
+          "fieldConfig": { "defaults": {}, "overrides": [] },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "center"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT sum(additions+deletions) as lines_changed FROM commit_details WHERE $__timeFilter(commit_date)"
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "title": "Files Changed",
+          "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+          "gridPos": { "h": 3, "w": 6, "x": 18, "y": 10 },
+          "id": 7,
+          "fieldConfig": { "defaults": {}, "overrides": [] },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "center"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT sum(files_changed) FROM commit_details WHERE $__timeFilter(commit_date)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "row",
+      "title": "Development Metrics Details",
+      "collapsed": true,
+      "panels": [
+        {
+          "type": "table",
+          "title": "Commits per Developer",
+          "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+          "gridPos": { "h": 6, "w": 12, "x": 0, "y": 14 },
+          "id": 8,
+          "fieldConfig": { "defaults": {}, "overrides": [] },
+          "options": { "showHeader": true },
+          "targets": [
+            {
+              "refId": "A",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT commit_user, count(*) FROM commit_details WHERE $__timeFilter(commit_date) GROUP BY commit_user"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "title": "Files Changed per Developer",
+          "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+          "gridPos": { "h": 6, "w": 12, "x": 12, "y": 14 },
+          "id": 9,
+          "fieldConfig": { "defaults": {}, "overrides": [] },
+          "options": { "showHeader": true },
+          "targets": [
+            {
+              "refId": "A",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT commit_user, sum(files_changed) FROM commit_details WHERE $__timeFilter(commit_date) GROUP BY commit_user"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "row",
+      "title": "Pipeline Metrics",
+      "collapsed": true,
+      "panels": [
+        {
+          "type": "table",
+          "title": "Overnight Pipeline Run Status",
+          "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+          "gridPos": { "h": 8, "w": 24, "x": 0, "y": 21 },
+          "id": 10,
+          "fieldConfig": { "defaults": {}, "overrides": [] },
+          "options": { "showHeader": true },
+          "targets": [
+            {
+              "refId": "A",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT repo_name, run_id, completed_at, conclusion, failure_reason FROM change_failure_rate_runs WHERE event = 'schedule' AND $__timeFilter(completed_at) ORDER BY completed_at DESC;"
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "title": "Total Releases",
+          "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+          "gridPos": { "h": 3, "w": 6, "x": 0, "y": 29 },
+          "id": 11,
+          "fieldConfig": { "defaults": {}, "overrides": [] },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "center"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT count(*) FROM change_failure_rate_runs WHERE $__timeFilter(completed_at)"
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "title": "Successful Releases",
+          "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+          "gridPos": { "h": 3, "w": 6, "x": 6, "y": 29 },
+          "id": 12,
+          "fieldConfig": { "defaults": {}, "overrides": [] },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "center"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT count(*) FROM change_failure_rate_runs WHERE $__timeFilter(completed_at) AND conclusion = 'success'"
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "title": "Failed Releases",
+          "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+          "gridPos": { "h": 3, "w": 6, "x": 12, "y": 29 },
+          "id": 13,
+          "fieldConfig": { "defaults": {}, "overrides": [] },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "center"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT count(*) FROM change_failure_rate_runs WHERE $__timeFilter(completed_at) AND conclusion = 'failure'"
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "title": "Average Release Duration (Mins)",
+          "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+          "gridPos": { "h": 3, "w": 6, "x": 18, "y": 29 },
+          "id": 14,
+          "fieldConfig": { "defaults": {}, "overrides": [] },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "center"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT AVG(duration_in_seconds) / 60 FROM build_durations WHERE $__timeFilter(completed_at)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "row",
+      "title": "DORA Metrics Detailed",
+      "collapsed": true,
+      "panels": [
+        {
+          "type": "stat",
+          "title": "Deployment Frequency",
+          "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+          "gridPos": { "h": 3, "w": 6, "x": 0, "y": 38 },
+          "id": 15,
+          "fieldConfig": { "defaults": {}, "overrides": [] },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "center"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT count(*) FROM change_failure_rate_runs WHERE $__timeFilter(completed_at)"
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "title": "Change Failure Rate",
+          "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+          "gridPos": { "h": 3, "w": 6, "x": 6, "y": 38 },
+          "id": 16,
+          "fieldConfig": { "defaults": {}, "overrides": [] },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "center"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT count(*) * 100.0 / (SELECT count(*) FROM change_failure_rate_runs WHERE $__timeFilter(completed_at)) FROM change_failure_rate_runs WHERE $__timeFilter(completed_at) AND conclusion = 'failure'"
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "title": "Lead Time for Changes (Hours)",
+          "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+          "gridPos": { "h": 3, "w": 6, "x": 12, "y": 38 },
+          "id": 17,
+          "fieldConfig": { "defaults": {}, "overrides": [] },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "center"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT AVG(lead_time_in_seconds) / 3600 FROM lead_time_to_change WHERE $__timeFilter(merged_at)"
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "title": "Mean Time to Recovery (Hours)",
+          "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+          "gridPos": { "h": 3, "w": 6, "x": 18, "y": 38 },
+          "id": 18,
+          "fieldConfig": { "defaults": {}, "overrides": [] },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "center"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT AVG(recovery_time_in_seconds) / 3600 FROM recovery_time WHERE $__timeFilter(recovery_completed_at)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "row",
+      "title": "DORA Performance Score",
+      "collapsed": true,
+      "panels": [
+        {
+          "type": "stat",
+          "title": "DORA Score",
+          "datasource": { "type": "grafana-postgresql-datasource", "uid": "cf1wcvvbfak8wd" },
+          "gridPos": { "h": 3, "w": 6, "x": 0, "y": 44 },
+          "id": 19,
+          "fieldConfig": { "defaults": {}, "overrides": [] },
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "center"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT AVG(score) FROM dora_metrics WHERE $__timeFilter(date)"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "refresh": "5m",
+  "tags": ["devops", "sonar", "overnight", "pipeline", "dora"],
+  "templating": { "list": [] },
+  "time": { "from": "now-2y", "to": "now" },
+  "timepicker": {},
+  "timezone": "browser",
+  "uid": null,
+  "version": 1,
+  "weekStart": ""
+} 

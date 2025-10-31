@@ -1,5 +1,7 @@
 import requests
 import psycopg2
+from datetime import datetime
+from dotenv import load_dotenv
 from datetime import datetime, timedelta
 import logging
 

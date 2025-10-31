@@ -1,0 +1,673 @@
+[
+  {
+    "h": 2,
+    "w": 24,
+    "x": 0,
+    "y": 0
+  },
+  {
+    "h": 5,
+    "w": 4,
+    "x": 0,
+    "y": 3
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "table",
+    "rawQuery": true,
+    "rawSql": "SELECT count(*) FROM commit_details WHERE $__timeFilter(commit_date) AND repo_name IN (${repo:sqlstring})",
+    "refId": "A"
+  },
+  {
+    "h": 5,
+    "w": 4,
+    "x": 4,
+    "y": 3
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "table",
+    "rawQuery": true,
+    "rawSql": "select count(distinct commit_user) from commit_details WHERE $__timeFilter(commit_date) AND repo_name IN (${repo:sqlstring})",
+    "refId": "A"
+  },
+  {
+    "h": 5,
+    "w": 4,
+    "x": 8,
+    "y": 3
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "table",
+    "rawQuery": true,
+    "rawSql": "select sum(additions+deletions) as lines_changed from commit_details WHERE $__timeFilter(commit_date) AND repo_name IN (${repo:sqlstring})",
+    "refId": "A"
+  },
+  {
+    "h": 5,
+    "w": 4,
+    "x": 12,
+    "y": 3
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "table",
+    "rawQuery": true,
+    "rawSql": "select sum(files_changed) from commit_details WHERE $__timeFilter(commit_date) AND repo_name IN (${repo:sqlstring})",
+    "refId": "A"
+  },
+  {
+    "h": 5,
+    "w": 4,
+    "x": 16,
+    "y": 3
+  },
+  {
+    "valueSize": 75
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "table",
+    "rawQuery": true,
+    "rawSql": "select count(*) from pr_details WHERE $__timeFilter(start_date) AND repo_name IN (${repo:sqlstring})",
+    "refId": "A"
+  },
+  {
+    "h": 5,
+    "w": 4,
+    "x": 20,
+    "y": 3
+  },
+  {
+    "valueSize": 75
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "table",
+    "rawQuery": true,
+    "rawSql": "select count(state) state from pr_details WHERE state='closed' AND $__timeFilter(start_date) AND repo_name IN (${repo:sqlstring})",
+    "refId": "A"
+  },
+  {
+    "color": "orange",
+    "value": 24
+  },
+  {
+    "color": "red",
+    "value": 168
+  },
+  {
+    "h": 8,
+    "w": 12,
+    "x": 0,
+    "y": 9
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "table",
+    "rawQuery": true,
+    "rawSql": "SELECT repo_name AS \"Repository\", AVG(lead_time_in_seconds) / 3600 AS \"Average Lead Time (Hours)\" FROM lead_time_to_change WHERE $__timeFilter(merged_at) AND repo_name IN (${repo:sqlstring}) GROUP BY repo_name ORDER BY \"Average Lead Time (Hours)\" DESC",
+    "refId": "A"
+  },
+  {
+    "log": 2,
+    "type": "log"
+  },
+  {
+    "mode": "off"
+  },
+  {
+    "color": "red",
+    "value": 80
+  },
+  {
+    "id": "custom.hideFrom",
+    "value": {
+      "legend": false,
+      "tooltip": false,
+      "viz": true
+    }
+  },
+  {
+    "h": 8,
+    "w": 12,
+    "x": 12,
+    "y": 9
+  },
+  {
+    "valueSize": 15
+  },
+  {
+    "hideZeros": false,
+    "mode": "single",
+    "sort": "none"
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "table",
+    "rawQuery": true,
+    "rawSql": "SELECT commit_user, count(*) FROM commit_details WHERE $__timeFilter(commit_date) AND repo_name IN (${repo:sqlstring}) group by commit_user",
+    "refId": "A"
+  },
+  {
+    "log": 2,
+    "type": "log"
+  },
+  {
+    "mode": "off"
+  },
+  {
+    "h": 8,
+    "w": 12,
+    "x": 0,
+    "y": 17
+  },
+  {
+    "valueSize": 15
+  },
+  {
+    "hideZeros": false,
+    "mode": "single",
+    "sort": "none"
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "table",
+    "rawQuery": true,
+    "rawSql": "select commit_user, sum(files_changed) from commit_details WHERE $__timeFilter(commit_date) AND repo_name IN (${repo:sqlstring}) group by commit_user",
+    "refId": "A"
+  },
+  {
+    "type": "linear"
+  },
+  {
+    "mode": "off"
+  },
+  {
+    "h": 8,
+    "w": 12,
+    "x": 12,
+    "y": 17
+  },
+  {
+    "valueSize": 15
+  },
+  {
+    "hideZeros": false,
+    "mode": "single",
+    "sort": "none"
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "table",
+    "rawQuery": true,
+    "rawSql": "select commit_user, sum(additions+deletions) as lines_changed from commit_details WHERE $__timeFilter(commit_date) AND repo_name IN (${repo:sqlstring}) group by commit_user",
+    "refId": "A"
+  },
+  {
+    "type": "linear"
+  },
+  {
+    "mode": "off"
+  },
+  {
+    "h": 8,
+    "w": 12,
+    "x": 0,
+    "y": 25
+  },
+  {
+    "valueSize": 15
+  },
+  {
+    "hideZeros": false,
+    "mode": "single",
+    "sort": "none"
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "time_series",
+    "rawQuery": true,
+    "rawSql": "SELECT date_trunc('day', end_date) AS \"time\", repo_name, COUNT(*) AS \"Merges\" FROM pr_details WHERE $__timeFilter(end_date) AND merged = true AND repo_name IN (${repo:sqlstring}) GROUP BY \"time\", repo_name ORDER BY \"time\" ASC;",
+    "refId": "A"
+  },
+  {
+    "type": "linear"
+  },
+  {
+    "mode": "off"
+  },
+  {
+    "h": 8,
+    "w": 12,
+    "x": 12,
+    "y": 25
+  },
+  {
+    "hideZeros": false,
+    "mode": "single",
+    "sort": "none"
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "time_series",
+    "rawQuery": true,
+    "rawSql": "SELECT date_trunc('day', commit_date) AS \"time\", repo_name, COUNT(*) AS \"Commits\" FROM commit_details WHERE $__timeFilter(commit_date) AND repo_name IN (${repo:sqlstring}) GROUP BY \"time\", repo_name ORDER BY \"time\" ASC;",
+    "refId": "A"
+  },
+  {
+    "type": "linear"
+  },
+  {
+    "mode": "off"
+  },
+  {
+    "h": 8,
+    "w": 24,
+    "x": 0,
+    "y": 34
+  },
+  {
+    "hideZeros": false,
+    "mode": "single",
+    "sort": "none"
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "time_series",
+    "rawQuery": true,
+    "rawSql": "SELECT date_trunc('day', completed_at) AS \"time\", repo_name, COUNT(*) AS \"Builds\" FROM change_failure_rate_runs WHERE $__timeFilter(completed_at) AND repo_name IN (${repo:sqlstring}) GROUP BY \"time\", repo_name ORDER BY \"time\" ASC;",
+    "refId": "A"
+  },
+  {
+    "h": 4,
+    "w": 6,
+    "x": 0,
+    "y": 42
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "table",
+    "rawQuery": true,
+    "rawSql": "SELECT COUNT(*) FROM change_failure_rate_runs WHERE $__timeFilter(completed_at) AND repo_name IN (${repo:sqlstring})",
+    "refId": "A"
+  },
+  {
+    "h": 4,
+    "w": 6,
+    "x": 6,
+    "y": 42
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "table",
+    "rawQuery": true,
+    "rawSql": "SELECT COUNT(*) FROM change_failure_rate_runs WHERE $__timeFilter(completed_at) AND repo_name IN (${repo:sqlstring}) AND conclusion = 'success'",
+    "refId": "A"
+  },
+  {
+    "h": 8,
+    "w": 24,
+    "x": 0,
+    "y": 46
+  },
+  {
+    "showHeader": true,
+    "cellHeight": "sm"
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "table",
+    "rawQuery": true,
+    "rawSql": "SELECT completed_at, repo_name, failure_reason FROM change_failure_rate_runs WHERE $__timeFilter(completed_at) AND repo_name IN (${repo:sqlstring}) AND conclusion = 'failure' ORDER BY completed_at DESC",
+    "refId": "A"
+  },
+  {
+    "h": 4,
+    "w": 6,
+    "x": 18,
+    "y": 42
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "table",
+    "rawQuery": true,
+    "rawSql": "SELECT AVG(duration_in_seconds) / 60 FROM build_durations WHERE $__timeFilter(completed_at) AND repo_name IN (${repo:sqlstring})",
+    "refId": "A"
+  },
+  {
+    "h": 6,
+    "w": 6,
+    "x": 0,
+    "y": 51
+  },
+  {},
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "time_series",
+    "rawQuery": true,
+    "rawSql": "SELECT analysis_date AS \"time\", coverage FROM sonar_results WHERE $__timeFilter(analysis_date) ORDER BY analysis_date",
+    "refId": "A"
+  },
+  {
+    "h": 6,
+    "w": 6,
+    "x": 6,
+    "y": 51
+  },
+  {},
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "time_series",
+    "rawQuery": true,
+    "rawSql": "SELECT analysis_date AS \"time\", bugs FROM sonar_results WHERE $__timeFilter(analysis_date) ORDER BY analysis_date",
+    "refId": "A"
+  },
+  {
+    "h": 6,
+    "w": 6,
+    "x": 12,
+    "y": 51
+  },
+  {},
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "time_series",
+    "rawQuery": true,
+    "rawSql": "SELECT analysis_date AS \"time\", vulnerabilities FROM sonar_results WHERE $__timeFilter(analysis_date) ORDER BY analysis_date",
+    "refId": "A"
+  },
+  {
+    "h": 6,
+    "w": 6,
+    "x": 18,
+    "y": 51
+  },
+  {},
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "time_series",
+    "rawQuery": true,
+    "rawSql": "SELECT analysis_date AS \"time\", code_smells FROM sonar_results WHERE $__timeFilter(analysis_date) ORDER BY analysis_date",
+    "refId": "A"
+  },
+  {
+    "h": 6,
+    "w": 24,
+    "x": 0,
+    "y": 57
+  },
+  {},
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "table",
+    "rawQuery": true,
+    "rawSql": "SELECT quality_gate_status, COUNT(*) FROM sonar_results WHERE $__timeFilter(analysis_date) GROUP BY quality_gate_status",
+    "refId": "A"
+  },
+  {
+    "h": 8,
+    "w": 12,
+    "x": 0,
+    "y": 64
+  },
+  {
+    "showHeader": true,
+    "cellHeight": "sm"
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "table",
+    "rawQuery": true,
+    "rawSql": "SELECT job_name, status, start_time, end_time, failure_reason FROM data_staging_runs WHERE start_time >= CURRENT_DATE - INTERVAL '1 day' ORDER BY start_time DESC",
+    "refId": "A"
+  },
+  {
+    "h": 8,
+    "w": 12,
+    "x": 12,
+    "y": 64
+  },
+  {
+    "showHeader": true,
+    "cellHeight": "sm"
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "table",
+    "rawQuery": true,
+    "rawSql": "SELECT completed_at, repo_name, conclusion, failure_reason FROM change_failure_rate_runs WHERE completed_at >= CURRENT_DATE - INTERVAL '1 day' ORDER BY completed_at DESC",
+    "refId": "A"
+  },
+  {
+    "h": 4,
+    "w": 6,
+    "x": 0,
+    "y": 73
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "table",
+    "rawQuery": true,
+    "rawSql": "SELECT AVG(lead_time_in_seconds) / 3600 FROM lead_time_to_change WHERE $__timeFilter(merged_at) AND repo_name IN (${repo:sqlstring})",
+    "refId": "A"
+  },
+  {
+    "color": "#EAB839",
+    "value": ""
+  },
+  {
+    "h": 4,
+    "w": 6,
+    "x": 6,
+    "y": 73
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "table",
+    "rawQuery": true,
+    "rawSql": "SELECT COALESCE((CAST(COUNT(*) AS REAL) / NULLIF(EXTRACT(DAYS FROM (MAX(completed_at) - MIN(completed_at))), 0)) * 30.44, 0) FROM change_failure_rate_runs WHERE $__timeFilter(completed_at) AND repo_name IN (${repo:sqlstring}) AND conclusion = 'success'",
+    "refId": "A"
+  },
+  {
+    "color": "orange",
+    "value": 15
+  },
+  {
+    "color": "red",
+    "value": 30
+  },
+  {
+    "h": 4,
+    "w": 6,
+    "x": 12,
+    "y": 73
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "table",
+    "rawQuery": true,
+    "rawSql": "SELECT CAST(COUNT(CASE WHEN conclusion = 'failure' THEN 1 END) AS REAL) * 100 / NULLIF(COUNT(*), 0) FROM change_failure_rate_runs WHERE $__timeFilter(completed_at) AND repo_name IN (${repo:sqlstring})",
+    "refId": "A"
+  },
+  {
+    "color": "orange",
+    "value": 8
+  },
+  {
+    "color": "red",
+    "value": 24
+  },
+  {
+    "h": 4,
+    "w": 6,
+    "x": 18,
+    "y": 73
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "table",
+    "rawQuery": true,
+    "rawSql": "SELECT AVG(time_to_recover_in_seconds) / 3600 FROM incidents_for_mttr WHERE $__timeFilter(resolution_time) AND repo_name IN (${repo:sqlstring})",
+    "refId": "A"
+  },
+  {
+    "color": "orange",
+    "value": 4
+  },
+  {
+    "color": "yellow",
+    "value": 7
+  },
+  {
+    "color": "green",
+    "value": 9
+  },
+  {
+    "h": 4,
+    "w": 6,
+    "x": 0,
+    "y": 77
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "table",
+    "rawQuery": true,
+    "rawSql": "WITH metric AS (SELECT COALESCE(AVG(lead_time_in_seconds) / 3600, 99999) as value FROM lead_time_to_change WHERE $__timeFilter(merged_at) AND repo_name IN (${repo:sqlstring})) SELECT CASE WHEN value <= 1 THEN 10 WHEN value <= 24 THEN 8 WHEN value <= 168 THEN 6 WHEN value <= 720 THEN 4 WHEN value <= 4380 THEN 2 ELSE 0 END FROM metric",
+    "refId": "A"
+  },
+  {
+    "h": 4,
+    "w": 24,
+    "x": 0,
+    "y": 82
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "cf1wcvvbfak8wd"
+    },
+    "editorMode": "code",
+    "format": "table",
+    "rawQuery": true,
+    "rawSql": "SELECT /* Your DORA performance score calculation here */",
+    "refId": "A"
+  }
+]

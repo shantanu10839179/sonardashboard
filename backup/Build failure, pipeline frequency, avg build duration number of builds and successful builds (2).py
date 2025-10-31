@@ -81,14 +81,17 @@ def setup_database(conn):
 def insert_cfr_data(conn, data):
     with conn.cursor() as cursor:
         insert_query = """
-            INSERT INTO change_failure_rate_runs (repo_name, run_id, conclusion, completed_at)
-            VALUES (%s, %s, %s, %s) ON CONFLICT (repo_name, run_id) DO UPDATE SET
+            INSERT INTO change_failure_rate_runs (repo_name, run_id, conclusion, completed_at, failure_reason)
+            VALUES (%s, %s, %s, %s, %s)
+            ON CONFLICT (repo_name, run_id) DO UPDATE SET
                 conclusion = EXCLUDED.conclusion,
-                completed_at = EXCLUDED.completed_at;
+                completed_at = EXCLUDED.completed_at,
+                failure_reason = EXCLUDED.failure_reason;
         """
         cursor.executemany(insert_query, data)
         conn.commit()
     print(f"  - Upserted {len(data)} records for CFR/Build Count analysis.")
+
 
 def insert_build_duration_data(conn, data):
     with conn.cursor() as cursor:

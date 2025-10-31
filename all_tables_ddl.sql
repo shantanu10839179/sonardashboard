@@ -272,3 +272,21 @@ ALTER TABLE ONLY public.sonarqube_results
     ADD CONSTRAINT sonarqube_results_pkey PRIMARY KEY (id);
 
 --- sonarqube_results; Type: TABLE; Schema: public; Owner: postgres
+
+
+CREATE TABLE IF NOT EXISTS public.change_failure_rate_runs
+(
+    id integer NOT NULL DEFAULT nextval('change_failure_rate_runs_id_seq'::regclass),
+    repo_name character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    run_id bigint NOT NULL,
+    conclusion character varying(50) COLLATE pg_catalog."default",
+    completed_at timestamp with time zone,
+    failure_reason character varying(255) COLLATE pg_catalog."default",
+    CONSTRAINT change_failure_rate_runs_pkey PRIMARY KEY (id),
+    CONSTRAINT change_failure_rate_runs_repo_name_run_id_key UNIQUE (repo_name, run_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.change_failure_rate_runs
+    OWNER to postgres;
